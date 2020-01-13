@@ -5,7 +5,7 @@ var b = 2;
 console.log(a + b);
 
 var c = a + b;
-console.warn(c);
+console.log(c);
 
 if (a < b) {
     console.log('a is lesser than b');
@@ -15,7 +15,7 @@ if (a < b) {
     /* do the following things 
     if a is lesser than b */
 
-    /* this is a comment for the lazies (option + shift + A) */
+    /* this is a comment for the lazies (pelkkä lause ja sitten option + shift + A) */
     console.log(a + ' is lesser than ' + b);
 } else {
     console.log('a is greater than b');
