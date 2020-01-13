@@ -33,6 +33,6 @@ var b = 2;
 
 if (a < b) {
     console.log('a is lesser than b');
-} else ( a > b) {
+} else {
     console.log('a is greater than b');
 }
