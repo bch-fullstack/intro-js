@@ -18,8 +18,6 @@ if (a < b) {
     /* this is a comment for the lazies (option + shift + A) */
     console.log(a + ' is lesser than ' + b);
 } else {
-    /* do the following 
-    things otherwise */
     console.log('a is greater than b');
 }
 if (a < b) {
