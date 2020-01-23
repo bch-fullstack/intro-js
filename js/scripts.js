@@ -7,16 +7,25 @@ function validateForm(e){
     console.log('user name: ' + validateUsername());
     console.log('email: ' + validateEmail());
     console.log('password: ' + validatePassword());
+    console.log('first name: ' + validateFirstName()); 
+    console.log('last name: ' + validateLastName());
+    console.log('phone number: ' + validatePhoneNumber());
 
-    if (validateUsername() && validateEmail() && validatePassword()) {
+    if (validateUsername() && validateEmail() && validatePassword() && validateFirstName() && validateLastName() && validatePhoneNumber()) {
         var _newUser = getUserName();   
         // add code to update registeredUsers array with new user and call render function
         // TODO
+        registeredUsers.push(_newUser);
+        renderRegisteredUsers();
+        if (registeredUsers.length > 4) {
+            registeredUsers.shift();
+        }
         document.registration.reset(); // reset form input fields
     }
 }
 
 function renderRegisteredUsers() {
+    document.getElementById('registered-users').innerHTML = '';
     registeredUsers.forEach(function(registeredUser){
         var _newUser = document.createElement('li'); 
         _newUser.innerHTML = registeredUser;
@@ -32,6 +41,34 @@ function validateUsername(){
     var _userName = getUserName();
     
     return !checkSpace(_userName);
+}
+
+// validate submitted first name
+function validateFirstName() {
+    var _firstName = getFirstName();
+
+    return _firstName;
+}
+
+// validate submitted last name
+function validateLastName() {
+    var _lastName = getLastName();
+
+    return _lastName;
+}
+
+// validate submitted phone number
+function validatePhoneNumber() {
+    var _phoneNumber = getPhoneNumber();
+
+    if (isNaN(_phoneNumber)) {
+        return false;
+    }
+    if (_phoneNumber.length < 6) {
+        return false;
+    }
+
+    return _phoneNumber;
 }
 
 /**
@@ -78,6 +115,10 @@ function validatePassword() {
     if (_password !== _confirmPassword) {
         return false;
     }
+    // check that the password is more than eight characters
+    if (_password.length < 8) {
+        return false;
+    }
 
     return true;
 }
@@ -109,12 +150,52 @@ function getUserName() {
 
 function getEmail() {
     // TODO
+    if (typeof(document.registration.email.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.email.value;
+    }
 }
 
 function getPassword() {
     // TODO
+    if (typeof (document.registration.password.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.password.value;
+    }
 }
 
 function getConfirmPassword() {
     // TODO
+    if (typeof (document.registration.password_confirm.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.password_confirm.value;   
+    }
 }
+function getFirstName() {
+    if (typeof (document.registration.firstName.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.firstName.value;
+    }
+}
+
+function getLastName() {
+    if (typeof (document.registration.lastName.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.lastName.value;
+    }
+}
+
+function getPhoneNumber() {
+    if (typeof (document.registration.phoneNumber.value) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.phoneNumber.value;
+    }
+}
+
+
