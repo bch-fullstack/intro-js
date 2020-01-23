@@ -64,10 +64,16 @@ function validatePhoneNumber() {
     if (isNaN(_phoneNumber)) {
         return false;
     }
+
     if (_phoneNumber.length < 6) {
         return false;
     }
 
+    var atPlusSign = _phoneNumber.indexOf('+');
+    if (atPlusSign === 0) {
+        return false;
+    }
+    
     return _phoneNumber;
 }
 
@@ -117,6 +123,14 @@ function validatePassword() {
     }
     // check that the password is more than eight characters
     if (_password.length < 8) {
+        return false;
+    }
+    // check that the password has at least a number and a capital letter
+    if (_password.search[/A-Z/i] === 0) {
+        return false;
+    }
+
+    if (_password.search[/0-9/] === 0) {
         return false;
     }
 
