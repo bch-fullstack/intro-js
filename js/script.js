@@ -14,5 +14,5 @@ else{
     console.log('a is not greater than b');
 }
 if (a === b) { 
-    console.log('a is exzactly 1');
+    console.log('a is exactly 1');
 }
