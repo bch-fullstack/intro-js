@@ -1,5 +1,9 @@
 var registeredUsers = []; // this array stores valid usernames until the next pageload
 
+$(document).ready(function() {
+    $('#registerBtn').on('click', validateForm);
+});
+
 function validateForm(e){
     e.preventDefault(); // stop the submit button from refreshing the page
     console.log('validating ....');
@@ -40,9 +44,10 @@ function getUserDataObj() {
 }
 
 function renderRegisteredUsers() {
-    document.getElementById('registered-users').innerHTML = '';
-    registeredUsers.forEach(function(registeredUser){
-        var _newUser = document.createElement('li'); 
+    // document.getElementById('registered-users').innerHTML = '';
+    $('#registered-users').empty();
+    registeredUsers.forEach(function (registeredUser) {
+        var _newUser = document.createElement('li');
         _newUser.innerHTML = JSON.stringify(registeredUser);
         document.getElementById('registered-users').appendChild(_newUser);
     });
@@ -204,57 +209,66 @@ function checkSpace(sample) {
  * @returns [Boolean] true when valid, false otherwise
  */
 function getUserName() {
-    if (typeof(document.registration.username.value) === 'undefined') {
+    /* if (typeof(document.registration.username.value) === 'undefined') { */
+    if (typeof($('[name="username"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.username.value;
+        return $('[name="username"]').val();
     }   
 }
 
 function getFirstName() {
-    if (typeof(document.registration.firstname.value) === 'undefined') {
+    /*if (typeof(document.registration.firstname.value) === 'undefined') { */
+    if (typeof($('[name="firstname"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.firstname.value;
+        return $('[name="firstname"]').val();
     }   
 }
 
 function getLastName() {
-    if (typeof(document.registration.lastname.value) === 'undefined') {
+    /*if (typeof(document.registration.lastname.value) === 'undefined') { */
+    if (typeof($('[name="lastname"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.lastname.value;
+        return $('[name="lastname"]').val();
     }   
 }
 
 function getPhoneNumber() {
-    if (typeof(document.registration.phonenumber.value) === 'undefined') {
+    /*if (typeof(document.registration.phonenumber.value) === 'undefined') { */
+    if (typeof($('[name="phonenumber"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.phonenumber.value;
+        return $('[name="phonenumber"]').val();
     }   
 }
 
 function getEmail() {
-    if (typeof(document.registration.email.value) === 'undefined') {
+    /*if (typeof(document.registration.email.value) === 'undefined') { */
+    if (typeof($('[name="email"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.email.value;
+        return $('[name="email"]').val();
     }   
 }
 
 function getPassword() {
-    if (typeof(document.registration.password.value) === 'undefined') {
+    /*if (typeof(document.registration.password.value) === 'undefined') { */
+    if (typeof($('[name="password"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.password.value;
+        return $('[name="password"]').val();
     }   
 }
 
 function getConfirmPassword() {
-    if (typeof(document.registration.password_confirm.value) === 'undefined') {
+    /* if (typeof(document.registration.password_confirm.value) === 'undefined') { */
+    if (typeof($('[name="password_confirm"]').val()) === 'undefined') {
         return '';
     } else {
-        return document.registration.password_confirm.value;
+        //return 
+        //document.registration.password_confirm.value;
+        return $('[name="password_confirm"]').val();
     }   
 }
