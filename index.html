@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hello World</title>
-    <script type="text/javascript">
-        console.log('Hello World');
-    </script>
 
-    <script type="text/javascript" src="js/scripts.js"></script>
-
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <img class="slider__photo active" src="img/helsinki.jpg">
+            <img class="slider__photo" src="img/helsinki1.jpg">
+            <img class="slider__photo" src="img/helsinki2.jpg">
+            <img class="slider__photo" src="img/helsinki3.jpg">
+            <img class="slider__photo" src="img/helsinki4.jpg">
+            
+            <div class="slider__button--next"></div>
+            <div class="slider__button--prev"></div>
+        </div>  
+    </div>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

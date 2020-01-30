@@ -1,0 +1,81 @@
+/* Set up space for the slider content */
+.slider-wrapper {
+    position: relative;
+    overflow: hidden; /* oversize parts of child elements will be hidden */
+    width: 90%;
+}
+
+.slider-wrapper * {
+    box-sizing: border-box;
+}
+
+/* ENDING */
+
+/* Style each photo so that each of them would stay in the middle of the slider
+when visible */
+
+.slider__photo {
+    opacity: 0; /* photos stay hidden be default */
+    position: absolute; /* position at x = 0 y = 0 relatively to the container */
+    top: 0;
+    width: 100%; /* 100% width of the parent */
+    margin: auto; /* this keeps things centered */
+    padding: 1rem 4rem;
+    z-index: 100; /* elements are arranged on top of each other with priority z-index */
+    transition: transform .5s, opacity .5s, z-index .5s;
+}
+
+.slider__photo.initial,
+.slider__photo.active {
+  opacity: 1; /* only elements with active and initial classes will be visible */
+  position: relative;
+  z-index: 900;
+}
+
+.slider__photo.prev,
+.slider__photo.next {
+  z-index: 800;
+}
+.slider__photo.prev {
+  transform: translateX(-100%); /* Move 'prev' item to the left */
+}
+.slider__photo.next {
+  transform: translateX(100%); /* Move 'next' item to the right */
+}
+
+/* Styling for the prev and next buttons */
+.slider__button--prev,
+.slider__button--next {
+  position: absolute;
+  top:50%;
+  width: 3rem;
+  height: 3rem;
+  background-color: #FFF;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  cursor: pointer; 
+  z-index: 1001; /* Sit on top of everything */
+  border: 1px solid black;
+}
+.slider__button--prev {
+  left:0;
+}
+.slider__button--next {
+  right:0;
+}
+.slider__button--prev::after,
+.slider__button--next::after {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 54%;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+.slider__button--next::after {
+  left: 47%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
