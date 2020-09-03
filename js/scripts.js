@@ -1,3 +1,14 @@
+/**
+ * DOM Manipulation
+ * 
+ * $ or jQuery or window.jQuery
+ * 
+ * document.getElementById('someID') => $('#someID')
+ * document.getElementsByClassName('someClass') => $('.someClass')
+ * document.getElementsByTagName('someTag') => $('someTag')
+ * document.createElement('div').innerText = 'test';  => el = $('<div>test</div>')
+ */
+
 var registeredUsers = ['hoang', 'Ronald', 'Tarjamo', 'user1']; // this array stores valid usernames until the next pageload
 
 function validateForm(e){
@@ -18,7 +29,7 @@ function validateForm(e){
         }
 
         // 2. call render function
-        document.getElementById('registered-users').innerHTML = '';
+        $('#registered-users').empty();
         renderRegisteredUsers();
 
         document.registration.reset(); // reset form input fields
@@ -26,10 +37,18 @@ function validateForm(e){
 }
 
 function renderRegisteredUsers() {
+    // $.each(registeredUsers, function(registeredUser){
+    //     $('<li>' + registeredUser + '</li>').appendTo('#registered-users')
+        // var _newUser = document.createElement('li'); 
+        // _newUser.innerHTML = registeredUser;
+        // document.getElementById('registered-users').appendChild(_newUser);
+    // })
+
     registeredUsers.forEach(function(registeredUser){
-        var _newUser = document.createElement('li'); 
-        _newUser.innerHTML = registeredUser;
-        document.getElementById('registered-users').appendChild(_newUser);
+        $('<li>' + registeredUser + '</li>').appendTo('#registered-users')
+        // var _newUser = document.createElement('li'); 
+        // _newUser.innerHTML = registeredUser;
+        // document.getElementById('registered-users').appendChild(_newUser);
     });
 } 
 
@@ -109,11 +128,13 @@ function checkSpace(sample) {
  * @returns [String] user input or an empty string
  */
 function getUserName() {
-    if (typeof(document.registration.username) === 'undefined') {
-        return '';
-    } else {
-        return document.registration.username.value;
-    }   
+    // if (typeof(document.registration.username) === 'undefined') {
+    //     return '';
+    // } else {
+    //     return document.registration.username.value;
+    // }   
+
+    return $('[name="username"]').val();
 }
 
 /**
@@ -124,11 +145,12 @@ function getUserName() {
  * @returns [String] user input or an empty string
  */
 function getEmail() {
-    if (typeof(document.registration.email) === 'undefined') {
-        return '';
-    } else {
-        return document.registration.email.value;
-    }   
+    // if (typeof(document.registration.email) === 'undefined') {
+    //     return '';
+    // } else {
+    //     return document.registration.email.value;
+    // }   
+    return $('[name="email"]').val();
 }
 
 /**
@@ -139,11 +161,12 @@ function getEmail() {
  * @returns [String] user input or an empty string
  */
 function getPassword() {
-    if (typeof(document.registration.password) === 'undefined') {
-        return ''; // empty string
-    } else {
-        return document.registration.password.value;
-    }  
+    // if (typeof(document.registration.password) === 'undefined') {
+    //     return ''; // empty string
+    // } else {
+    //     return document.registration.password.value;
+    // }  
+    return $('[name="password"]').val();
 }
 
 /**
@@ -154,9 +177,10 @@ function getPassword() {
  * @returns [String] user input or an empty string
  */
 function getConfirmPassword() {
-    if (typeof(document.registration.password_confirm) === 'undefined') {
-        return ''; // empty string
-    } else {
-        return document.registration.password_confirm.value;
-    }  
+    // if (typeof(document.registration.password_confirm) === 'undefined') {
+    //     return ''; // empty string
+    // } else {
+    //     return document.registration.password_confirm.value;
+    // } 
+    return $('[name="password_confirm"]').val();
 }
