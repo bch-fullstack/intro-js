@@ -194,14 +194,14 @@
     document.body.appendChild(sliderEl);
 
     function addSlide(imgUrl){
-        var firstSlide = document.createElement('div');
-        var firstSlideImage = document.createElement('img');
-        firstSlideImage.setAttribute('data-lazy', imgUrl);
-        firstSlideImage.setAttribute('data-srcset', imgUrl);
-        firstSlideImage.setAttribute('data-sizes', '100vw');
-        firstSlide.appendChild(firstSlideImage);
+        var slide = document.createElement('div');
+        var slideImage = document.createElement('img');
+        slideImage.setAttribute('data-lazy', imgUrl);
+        slideImage.setAttribute('data-srcset', imgUrl);
+        slideImage.setAttribute('data-sizes', '100vw');
+        slide.appendChild(slideImage);
 
-        sliderEl.appendChild(firstSlide);
+        sliderEl.appendChild(slide);
     }
 
     var imgUrl = '//www.partioaitta.fi/bo-assets/binaryImages/96/klubitarjoukset-syyskuu-1500x450-35796.jpg?v=a2f7e6b30e35dcebdce0ae0d0c278e93';
