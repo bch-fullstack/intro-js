@@ -193,7 +193,11 @@
     sliderEl.setAttribute('data-sizes', '50vw');
     document.body.appendChild(sliderEl);
 
-    function addSlide(imgUrl){
+    function addSlide(imgUrl='http://placehold.it/650x300?text=1-650w'){
+        // if(typeof(imgUrl) === 'undefined') {
+        //     imgUrl = 'http://placehold.it/650x300?text=1-650w';
+        // }
+
         var slide = document.createElement('div');
         var slideImage = document.createElement('img');
         slideImage.setAttribute('data-lazy', imgUrl);
@@ -208,12 +212,12 @@
 
     addSlide(imgUrl);
     addSlide(imgUrl);
+    addSlide();
+    addSlide();
     addSlide(imgUrl);
     addSlide(imgUrl);
-    addSlide(imgUrl);
-    addSlide(imgUrl);
-    addSlide(imgUrl);
-    addSlide(imgUrl);
+    addSlide();
+    addSlide();
     addSlide(imgUrl);
 
     $(document).ready(function(){
