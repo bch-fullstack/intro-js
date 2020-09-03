@@ -187,5 +187,59 @@
         // } 
         return $('[name="password_confirm"]').val();
     }
+
+    var sliderEl = document.createElement('section');
+    sliderEl.classList.add('lazy', 'slider');
+    sliderEl.setAttribute('data-sizes', '50vw');
+    document.body.appendChild(sliderEl);
+
+    var firstSlide = document.createElement('div');
+    var firstSlideImage = document.createElement('img');
+    firstSlideImage.setAttribute('data-lazy', 'http://placehold.it/350x300?text=1-350w');
+    firstSlideImage.setAttribute('data-srcset', 'http://placehold.it/650x300?text=1-650w 650w, http://placehold.it/960x300?text=1-960w 960w');
+    firstSlideImage.setAttribute('data-sizes', '100vw');
+    firstSlide.appendChild(firstSlideImage);
+
+    sliderEl.appendChild(firstSlide);
+
+    var secondSlide = document.createElement('div');
+    var secondSlideImage = document.createElement('img');
+    secondSlideImage.setAttribute('data-lazy', 'http://placehold.it/350x300?text=1-350w');
+    secondSlideImage.setAttribute('data-srcset', 'http://placehold.it/650x300?text=1-650w 650w, http://placehold.it/960x300?text=1-960w 960w');
+    secondSlideImage.setAttribute('data-sizes', '100vw');
+    secondSlide.appendChild(secondSlideImage);
+
+    sliderEl.appendChild(secondSlide);
 })(window.jQuery)
+
+/**
+ * 
+ * 
+ * confusing is OK <<< 
+ * copy paste << 
+ * What to copy
+ * Where to paste
+ * How to reengineer
+ * Inheriting other people work and able to make use, tailor to your own needs
+ * Reinvent the wheel
+ * 
+ * remember? 70%   <<<
+ * when you do A then B will happen -> understanding is optional  <<<<
+ * 
+ * 
+ * understand? 30%
+ * algorithm, flow of the code
+ * Do A,
+ * Do B,
+ * Then we get C
+ * 
+ * A1 A2 A3
+ * B1 B2 B3
+ * C1 C2 C3 
+ * D
+ * E
+ * F
+ * 
+ * 
+ */
 
