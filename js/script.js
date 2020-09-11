@@ -53,9 +53,9 @@ console.log('Script loaded')
 
 var clock = {
     constants: {
-        alpha: 360 / 60,
-        beta: 360 / 60 / 60,
-        delta: 360 / 12 
+        alpha: 360 / 60, // second arm travel in a second
+        beta: 360 / 60, // minute arm travel in a minute
+        delta: 360 / 12 // hour arm travel in an hour
     },
     arms: {
         hour: document.getElementById('hour'),
@@ -72,6 +72,7 @@ var clock = {
         minute: null,
         second: null
     },
+    sound: new Audio('../ring.mp3'),
     getNow: function(){
         var time = new Date()
         this.now.hour = time.getHours()
@@ -81,7 +82,7 @@ var clock = {
     getAngles: function(){
         this.angles.second = this.constants.alpha * this.now.second;
         this.angles.minute = this.constants.beta * (this.now.minute + this.now.second / 60);
-        this.angles.hour = this.constants.delta * (this.now.hour + this.now.minute / 60 + this.now.second / 360);
+        this.angles.hour = this.constants.delta * (this.now.hour + this.now.minute / 60 + this.now.second / 3600);
     },
     positionClockArms: function(){
         this.arms.second.style.transform = `rotate(${this.angles.second}deg)`;
@@ -89,10 +90,18 @@ var clock = {
         this.arms.hour.style.transform = `rotate(${this.angles.hour}deg)`;
     },
     adjustAngles: function(){
-        console.log(this)
         this.now.second++;
         this.getAngles();
         this.positionClockArms();
+    },
+    setAlarm: function(time){
+        var hour = time.split(':')[0];
+        var minute = time.split(':')[1];
+        var scope = this;
+
+        setInterval(function(){
+            scope.sound.play()
+        }, 1000)
     },
     init: function(){
         this.getNow();
@@ -108,6 +117,20 @@ var clock = {
 }
 
 clock.init()
+
+document.getElementById('time').addEventListener('change', function(){
+    clock.setAlarm(this.value)
+})
+
+document.querySelector("#time").addEventListener("input", function(e) {
+    const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+    const time = this.value;
+    if (reTime.exec(time)) {
+      const minute = Number(time.substring(3,5));
+      const hour = Number(time.substring(0,2)) % 12 + (minute / 60);
+      this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
+    }
+});
 
 // clock.getNow()
 // clock.getAngles()
