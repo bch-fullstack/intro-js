@@ -73,6 +73,10 @@ var clock = {
         second: null
     },
     sound: new Audio('../ring.mp3'),
+    alarm: {
+        hour: null,
+        minute: null
+    },
     getNow: function(){
         var time = new Date()
         this.now.hour = time.getHours()
@@ -95,12 +99,17 @@ var clock = {
         this.positionClockArms();
     },
     setAlarm: function(time){
-        var hour = time.split(':')[0];
-        var minute = time.split(':')[1];
+        this.alarm.hour = time.split(':')[0];
+        this.alarm.minute = time.split(':')[1];
         var scope = this;
-
+        console.log(scope)
+        console.log(`Setting alarm at ${this.alarm.hour}:${this.alarm.minute}`)
         setInterval(function(){
-            scope.sound.play()
+            console.log(`Check for alarm at ${scope.alarm.hour}:${scope.alarm.minute}`)
+            var now = new Date()
+            if (now.getHours() == scope.alarm.hour && now.getMinutes() == scope.alarm.minute){
+                scope.sound.play()
+            }
         }, 1000)
     },
     init: function(){
@@ -118,8 +127,10 @@ var clock = {
 
 clock.init()
 
-document.getElementById('time').addEventListener('change', function(){
-    clock.setAlarm(this.value)
+document.getElementById('alarm').addEventListener('submit', function(e){
+    e.preventDefault()
+    console.log(this.time.value)
+    clock.setAlarm(this.time.value)
 })
 
 document.querySelector("#time").addEventListener("input", function(e) {
