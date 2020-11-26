@@ -207,59 +207,5 @@
 
         sliderEl.appendChild(slide);
     }
-
-    var imgUrl = '//www.partioaitta.fi/bo-assets/binaryImages/96/klubitarjoukset-syyskuu-1500x450-35796.jpg?v=a2f7e6b30e35dcebdce0ae0d0c278e93';
-
-    addSlide(imgUrl);
-    addSlide(imgUrl);
-    addSlide();
-    addSlide();
-    addSlide(imgUrl);
-    addSlide(imgUrl);
-    addSlide();
-    addSlide();
-    addSlide(imgUrl);
-
-    $(document).ready(function(){
-        $(".lazy").slick({
-            lazyLoad: 'ondemand', // ondemand progressive anticipated
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 100,
-            arrows: true,
-            dots: true,
-        });
-    })
 })(window.jQuery)
-
-/**
- * 
- * 
- * confusing is OK <<< 
- * copy paste << 
- * What to copy
- * Where to paste
- * How to reengineer
- * Inheriting other people work and able to make use, tailor to your own needs
- * Reinvent the wheel
- * 
- * remember? 70%   <<<
- * when you do A then B will happen -> understanding is optional  <<<<
- * 
- * 
- * understand? 30%
- * algorithm, flow of the code
- * Do A,
- * Do B,
- * Then we get C
- * 
- * A1 A2 A3
- * B1 B2 B3
- * C1 C2 C3 
- * D
- * E
- * F
- * 
- * 
- */
 
