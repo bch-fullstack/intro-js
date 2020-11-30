@@ -116,7 +116,7 @@ var clock = {
         this.getNow();
         this.getAngles();
         this.positionClockArms();
-        setInterval(this.adjustAngles.bind(this), 1000);
+        setInterval(this.adjustAngles, 1000);
         
         // var scope = this;
         // setInterval(function(){
